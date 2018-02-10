@@ -1,0 +1,26 @@
+var cols, rows;
+var scl = 20;
+var w = 1400;
+var h = 1000;
+
+var flying = 0;
+
+var terrain = [];
+
+function setup() {
+  createCanvas(600, 600, WEBGL);
+  cols = w / scl;
+  rows = h/ scl;
+
+  for (var x = 0; x < cols; x++) {
+    terrain[x] = [];
+    for (var y = 0; y < rows; y++) {
+      terrain[x][y] = 0; //specify a default value for now
+    }
+  }
+}
+
+function draw() {
+
+
+}

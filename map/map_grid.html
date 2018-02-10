@@ -21,10 +21,12 @@
             console.log("You clicked on item #:",i);
             //console.log(el.style.color);
             if(el.style.color == "blue") {
-              el.style.color = "red";
+              el.style.backgroundColor = "red";
+              el.style.color = "white";
             }
             else {
               el.style.color = "blue";
+              el.style.backgroundColor = "white";
             }
             
             if(list.includes(i)) {
@@ -39,7 +41,7 @@
             }
 
             console.log(list);
-            
+
             el.className='clicked';
             if (lastClicked) lastClicked.className='';
             lastClicked = el;

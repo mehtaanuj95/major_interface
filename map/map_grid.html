@@ -18,7 +18,14 @@
             console.log("You clicked on row:",row);
             console.log("You clicked on col:",col);
             console.log("You clicked on item #:",i);
-
+            //console.log(el.style.color);
+            if(el.style.color == "blue") {
+              el.style.color = "red";
+            }
+            else {
+              el.style.color = "blue";
+            }
+            
             el.className='clicked';
             if (lastClicked) lastClicked.className='';
             lastClicked = el;
@@ -35,6 +42,7 @@
                 for (var c=0;c<cols;++c){
                     var cell = tr.appendChild(document.createElement('td'));
                     cell.innerHTML = ++i;
+                    cell.style.color = "blue";
                     cell.addEventListener('click',(function(el,r,c,i){
                         return function(){
                             callback(el,r,c,i);

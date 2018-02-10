@@ -11,7 +11,8 @@
   <body>
 
       <script type="text/javascript">
-        
+        var list = [];
+
         var lastClicked;
         var grid = clickableGrid(10,10,function(el,row,col,i){
             console.log("You clicked on element:",el);
@@ -25,6 +26,19 @@
             else {
               el.style.color = "blue";
             }
+            
+            if(list.includes(i)) {
+              var index = list.indexOf(i);
+              if (index > -1) {
+                list.splice(index, 1);
+              }
+            }
+            else
+            {
+              list.push(i);
+            }
+
+            console.log(list);
             
             el.className='clicked';
             if (lastClicked) lastClicked.className='';
@@ -52,6 +66,8 @@
             }
             return grid;
         }
+
+
       </script>
 
 

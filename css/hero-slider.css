@@ -217,7 +217,7 @@ Single slide style
   background-image: url(../img/slide_02.jpg);
 }
 .cd-hero-slider li:nth-of-type(3) {
-  background-image: url(../img/slide_03.jpg);
+  background-image: url(../img/slide_0_3.jpg);
 }
 .cd-hero-slider .cd-full-width,
 .cd-hero-slider .cd-half-width {

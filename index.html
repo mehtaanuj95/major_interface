@@ -39,7 +39,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="#" class="scroll-top">Home</a></li>
                         <li><a href="#" class="scroll-link" data-id="about">About</a></li>
-                        <li><a href="map/map_grid.html" data-id="signIn">Simulate</a></li>
+                        <li><a href="#" class="scroll-link" data-id="signIn">Sign In</a></li>
                         <li><a href="#" class="scroll-link" data-id="contact">Contact Us</a></li>
                     </ul>
                 </div>
@@ -160,11 +160,37 @@
         </div>
     </div>
 
-    <div id="what-we-do">
+    <div id="signIn" class="page-section">
         <div class="container">
-            <!--
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h4>Sign In</h4>
+                        <div class="line-dec"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            	<form>
+            		<div class="col-md-4" style="font-size: 20px;">
+            			Username <input type="text" name="Username">
+            		</div>
+            		<div class="col-md-4" style="font-size: 20px;">	
+            			Password <input type="password" name="Password">
+            		</div>
+            		<div class="col-md-4 primary-button" style="font-size: 20px;">	
+            			<button onclick="authenticate">Sign In</button>
+            		</div>
+            	</form>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="signIn">
+        <div class="container">
+        	<div class="row">
+        		<div class="col-md-6">
                     <div class="left-text">
                         <h4>New offers just arrived,<br>Get it now and take profit.</h4>
                         <p>Gochujang pitchfork post-ironic hammock kombucha fanny pack cronut. Raw denim chicharrones semiotics af truffaut pinterest. Distillery letterpress authentic adaptogen. Meditation schlitz humblebrag photo booth celiac cliche chartreuse.<br><br>Pinterest 90's wolf celiac dreamcatcher listicle deep v semiotics. Intelligentsia literally meggings trust fund put a bird on it. Shoreditch crucifix artisan pug shaman twee. Health goth bicycle rights retro iPhone.</p>
@@ -186,24 +212,29 @@
                     <div class="right-image">
                         <img src="img/what-we-do-right-image.png" alt="">
                     </div>
-                </div>
+                </div> 
             </div>
-            -->
         </div>
-    </div>
-
+    </div> -->
 
     <footer>
-        <div class="container">
+        <div class="container" id="contact">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12" style="color:white">
+                	Contact Us <br>
+                	Department of Computer Science <br>
+                	Shri Govindram Seksaria Institute of Technology and Science <br>
+                	23 Park Road <br>
+                	Indore, Madhya Pradesh <br>
+                	452001 <br>
+                	Mobile: +91 8602453753
                     <div class="copyright-text">
                         <p>Copyright &copy; 2018
                         
                          <a href="https://github.com/mehtaanuj95/project-major-tsp" target="_parent">Major-project TSPA</a></p>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <!--<div class="col-md-6">
                     <div class="social-icons">
                         <ul>
                             <li>
@@ -223,7 +254,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </footer>
@@ -273,6 +304,8 @@
             log: function() { }
         };
     }
+
+    function authenticate()
     </script>
 </body>
 </html>

@@ -148,7 +148,7 @@
                 	else if(r == rows-1 && c == cols-1)
                 	{
                 		cell.innerHTML = "Final";
-                		cell.style.color = "red";
+                		cell.style.color = "orange";
                 		++i;
                 	}
                 	else

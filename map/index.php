@@ -53,7 +53,7 @@
 	            if(i == 100)
 	            {
 		            console.log("okayy, Element List Finalized");
-	            	simulate(list, points);
+	            	simulate(list, points, point_counter);
 	            }
 	            else
 	            {
@@ -112,10 +112,11 @@
         }
 
 
-        function simulate(list, points)
+        function simulate(list, points, point_counter)
         {
         	console.log(list);
           	document.getElementById("chelu").innerHTML = "#"+list;
+          	console.log(point_counter);
           	console.log(points);
         }
       </script>

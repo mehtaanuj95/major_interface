@@ -17,6 +17,41 @@
       	<script type="text/javascript">
         	var list = [];
 
+
+        	var cities = [];
+			var totalCities = 5;
+
+			var popSize = 50;
+			var population = [];
+			var fitness = [];
+
+			var recordDistance = Infinity;
+			var bestEver;
+			var currentBest;
+
+			var statusP;
+			var totalGenerations = 100;
+			var currentGeneration;
+
+			//Define start and end Times
+			var startTime;
+			var endTime;
+
+			//Mutation Rate
+			var mutationRate = 0.01;
+
+			//Greatest and the least values that the coordinates can take
+			var xMax = 40;     //These values are pixels
+			var yMax = 40;
+
+			//Cost MAtrix and reduced cost matrix
+			var cost = [];
+
+
+
+
+
+
         	//points array stores the selected coordinates
         	var points = new Array(10);
         	for(var i = 0;i < 10; i++) 
@@ -87,7 +122,7 @@
 
             
         });
-        console.log(list);
+        //console.log(list);
        	document.body.appendChild(grid);
              
         //Funtion to generate a clickable grid
@@ -118,7 +153,101 @@
           	document.getElementById("chelu").innerHTML = "#"+list;
           	console.log(point_counter);
           	console.log(points);
+
+          	//-----------------------------STEP - 1 ------------------------------//
+          	 //Create cost matrix
+			//Step - 1 : Create lower trianglualr matrix
+				for(var i = 0; i < 100; i++)
+				{
+			    	cost[i] = new Array(100);
+			    	for(var j = 0; j <= i; j++)
+			    	{
+			      		if(i == j) 
+			      		{
+			        		cost[i][j] = 0;
+			      		}
+			      		else 
+			      		{
+			        		cost[i][j] = Math.floor(Math.random()*(xMax+1));
+			      		}
+			    	}
+			  	}
+
+			  	//anuj[] is a lower triangular matrix
+			  	var anuj = [];
+			  	for(var i = 0; i < 100; i++)
+			  	{
+			    	anuj[i] = new Array(i);
+			    	for(var j = 0; j <= i; j++ )
+			    	{
+			      		anuj[i][j] = cost[i][j];
+			    	}
+			  	}
+			  	//console.log(anuj);
+
+          	//------------------------------STEP - 2--------------------------//
+          	//Step - 2 : Create rest cost matrix
+				for(var i = 0; i < 100; i++)
+			  	{
+			    	for(var j = i+1; j < 100; j++ )
+			    	{
+			      		cost[i][j] = cost[j][i];
+			    	}
+			  	}
+			  	//console.log(cost);
+
+
+			  	var order = [];
+				//Create initial given order of cities (exclude 1st city from it)
+				for (var i = 0; i < point_counter; i++) 
+				{
+					order[i] = list[i];
+				}
+				//console.log("Cities : ",cities);
+				//console.log("Order : ",order);
+
+
+				//Create shuffled orders to fill up entire population
+				population[0] = shuffle(order);
+				for (var i = 1; i < popSize; i++)
+				{    
+					population[i] = shuffle(population[i-1].slice());
+				}
+				currentGeneration = 1;
+				console.log(population);
+
+
+
+
+
+
+
+
+
+          	//------------------------------STEP - 2 Ends--------------------------//
+
+
         }
+
+        //Fisher–Yates shuffle  algorithm
+		function shuffle(array) {
+		  var currentIndex = array.length, temporaryValue, randomIndex;
+
+		  // While there remain elements to shuffle...
+		  while (0 !== currentIndex) {
+
+		    // Pick a remaining element...
+		    randomIndex = Math.floor(Math.random() * currentIndex);
+		    currentIndex -= 1;
+
+		    // And swap it with the current element.
+		    temporaryValue = array[currentIndex];
+		    array[currentIndex] = array[randomIndex];
+		    array[randomIndex] = temporaryValue;
+		  }
+
+		  return array;
+		}
       </script>
 
 

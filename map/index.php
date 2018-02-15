@@ -181,7 +181,8 @@
 			      		}
 			      		else 
 			      		{
-			        		cost[i][j] = Math.floor(Math.random()*(xMax+1));
+			        		//cost[i][j] = Math.floor(Math.random()*(xMax+1));
+			        		cost[i][j] = i+j;
 			      		}
 			    	}
 			  	}
@@ -248,6 +249,7 @@
 				    
 					break;
 				}
+
 			}
 			//------------------------------STEP - 4----------------------------//
 			//STEP - 4: Generate the coordinates from path
@@ -313,9 +315,123 @@
 				}
 				console.log();
 			}
+			var signal = document.getElementById("chelu").innerHTML;
+			console.log(signal);
 
+			start_animation(signal, coordinates, size_final, bestEver);
           	//------------------------------------------------------------------//
         }
+
+        //https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+        function sleep(ms) {
+		  return new Promise(resolve => setTimeout(resolve, ms));
+		}
+
+        async function start_animation(signal, coordinates, size_final, bestEver) 
+        {
+        	console.log("Animation function started");
+        	console.log('Taking a break...');
+		  	//await sleep(2000);
+		  	console.log('Two second later');
+        	//document.body.innerHTML = '';
+
+        	//-------------------------------START ANIMATION--------------------------------//
+
+        	var grid = document.createElement('table');
+            var rows = 10;
+            var cols = 10;
+            var i = 0;
+            grid.className = 'grid';
+            for (var r=0;r<rows;++r)
+            {
+                var tr = grid.appendChild(document.createElement('tr'));
+                for (var c=0;c<cols;++c)
+                {
+                    var cell = tr.appendChild(document.createElement('td'));
+                    
+                    cell.innerHTML = ++i;
+                   	cell.style.color = "blue";
+                    
+                }
+            }
+            document.body.appendChild(grid);
+
+            //Accessing grid elements
+            //https://www.w3schools.com/jsref/coll_table_cells.asp
+
+            //console.log(grid);
+            var g = new Array(10);
+            for(var m = 0; m < 10; m++) 
+            {
+            	g[m] = grid.rows[m].cells;
+            }
+            console.log(g);
+            //console.log(g[0][0].style.backgroundColor);
+            //g[0][0].style.backgroundColor = "green";
+            //var x = grid.rows[0].cells;
+            //console.log(x[0].innerHTML);
+            //console.log(x[3].style.backgroundColor = "green");
+           
+			//console.log("2,3 - " + g[2][3].innerHTML);
+			//console.log("3,3 - " + g[3][3].innerHTML);
+			//console.log("2,2 - " + g[2][2].innerHTML);
+			//console.log("4,3 - " + g[4][3].innerHTML);
+			
+			var x = 0; var y = 0;
+			console.log(bestEver);
+			//console.log(signal, signal.length);
+			for(var i = 0; i < signal.length; i++)
+			{
+				var e =  parseInt(g[x][y].innerHTML);
+				if(bestEver.includes(e))
+				{
+					//console.log("hehehehehe");
+					g[x][y].style.backgroundColor = "yellow";
+				}
+				else
+				{
+					g[x][y].style.backgroundColor = "green";
+				}
+				
+				if(signal[i] == "d")
+				{
+					x++;
+				}
+				else if(signal[i] == "u")
+				{
+					x--;
+				}
+				else if(signal[i] == "r")
+				{
+					y++;
+				}
+				else if(signal[i] == "l")
+				{
+					y--;
+				}	
+				else
+				{
+					console.log("Something weird occured :",signal[i]);
+				}
+
+				await sleep(500);
+
+			}
+			
+				
+        	//-------------------------------END ANIMATION----------------------------------//
+        }
+
+
+        
+
+		async function demo() {
+		  console.log('Taking a break...');
+		  await sleep(2000);
+		  console.log('Two second later');
+		}
+
+
 
         //Fisher–Yates shuffle  algorithm
 		function shuffle(array) {

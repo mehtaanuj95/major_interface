@@ -4,5 +4,5 @@
 - [x] generating a set of selected points.
 - [x] Running the native algorithm on these set of points
 
-- [ ] generate signals for sending into robot.
-- [ ] create a simulation for the optimised path
+- [x] generate signals for sending into robot.
+- [x] create a simulation for the optimised path

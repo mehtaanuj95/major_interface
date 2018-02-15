@@ -1,5 +1,8 @@
 - [x] Creating a clickable grid
 - [x] fixing color issues on clickable grid and applying de-select feature
-- [x] generating a string in span tag for thingspeak. @ac09
+- [x] generating a sample string in span tag for thingspeak.
 - [x] generating a set of selected points.
-- [ ] Running the native algorithm on these set of points
+- [x] Running the native algorithm on these set of points
+
+- [x] generate signals for sending into robot.
+- [x] create a simulation for the optimised path

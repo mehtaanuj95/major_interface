@@ -33,10 +33,6 @@
 			var totalGenerations = 100;
 			var currentGeneration;
 
-			//Define start and end Times
-			var startTime;
-			var endTime;
-
 			//Mutation Rate
 			var mutationRate = 0.01;
 
@@ -46,11 +42,6 @@
 
 			//Cost MAtrix and reduced cost matrix
 			var cost = [];
-
-
-
-
-
 
         	//points array stores the selected coordinates
         	var points = new Array(10);
@@ -258,6 +249,38 @@
 					break;
 				}
 			}
+			//------------------------------STEP - 4----------------------------//
+			//STEP - 4: Generate the coordinates from path
+			var size_final = bestEver.length;
+			var coordinates = new Array(size_final);
+			for(var i  = 0; i < size_final; i++) 
+			{
+				coordinates[i] = new Array(2);
+				coordinates[i][0] = 0; coordinates[i][1] = 0;
+
+			}
+
+			for(var i = 0; i < bestEver.length; i++)
+			{
+				var temp = bestEver[i];
+				//row
+				coordinates[i][0] = (parseInt((temp-1)/10+""));	
+				//column
+				var tt = (temp%10);
+				if(tt != 0)
+					coordinates[i][1] = tt - 1;
+				else
+				{
+					coordinates[i][1] = 9;
+				}
+				console.log(temp + "  " + coordinates[i][0] + "  " + coordinates[i][1]);
+				//temp = temp / 10;
+				//coordinates[i][0] = ((temp-1)/10);				
+			}
+			
+			//
+
+
           	//------------------------------------------------------------------//
         }
 

@@ -2,4 +2,4 @@
 - [x] fixing color issues on clickable grid and applying de-select feature
 - [x] generating a string in span tag for thingspeak. @ac09
 - [x] generating a set of selected points.
-- [ ] Running the native algorithm on these set of points
+- [x] Running the native algorithm on these set of points

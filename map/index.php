@@ -278,8 +278,41 @@
 				//coordinates[i][0] = ((temp-1)/10);				
 			}
 			
-			//
-
+			//STEP - 5 : generate signals for robot 
+			for(var k = 0; k < size_final - 1; k++) 
+			{
+				var x = coordinates[k+1][0] - coordinates[k][0];
+				var y = coordinates[k+1][1] - coordinates[k][1];
+					
+				//Vertical movement
+				if(x > 0) {
+					for(var i = 0; i < x; i++) {
+						//echo "down ";
+						//console.log("down");
+						document.getElementById("chelu").innerHTML += "d";
+					}
+				}
+				else {
+					for(var i = 0; i < (-1*x); i++) {
+						//console.log("up");
+						document.getElementById("chelu").innerHTML += "u";
+					}
+				}
+				//Horizontal movement
+				if(y > 0) {
+					for(i = 0; i < y; i++) {
+						//console.log("right");
+						document.getElementById("chelu").innerHTML += "r";
+					}
+				}
+				else {
+					for(i = 0; i < (-1*y); i++) {
+						//console.log("left");
+						document.getElementById("chelu").innerHTML += "l";
+					}
+				}
+				console.log();
+			}
 
           	//------------------------------------------------------------------//
         }

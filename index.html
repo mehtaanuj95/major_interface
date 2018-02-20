@@ -39,9 +39,9 @@
                     <ul class="nav navbar-nav">
                         <li><a href="#" class="scroll-top">Home</a></li>
 
-                        <li><a href="#" class="scroll-link" data-id="about">About Us</a></li>
-                        <li><a href="#" class="scroll-link" data-id="signIn">Sign In</a></li>
-                        <li><a href="#" class="scroll-link" data-id="contact">Contact Us</a></li>
+                        <li><a href="#about" class="scroll-link" data-id="about">About</a></li>
+                        <li><a href="#signIn" class="scroll-link" data-id="signIn">Sign In</a></li>
+                        <li><a href="#contact" class="scroll-link" data-id="contact">Contact Us</a></li>
 
                     </ul>
                 </div>
@@ -187,8 +187,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
 
+            	<form>
             		<div class="col-md-4" style="font-size: 20px;">
             			Username <input type="text" name="username">
             		</div>
@@ -322,20 +322,7 @@
         };
     }
 
-    function authenticate(elem) {
-    	console.log("authrnticate function entryy");
-    	
-    	console.log(document.getElementsByName("username")[0].value);
-    	console.log(document.getElementsByName("password")[0].value);
 
-    	if((document.getElementsByName("username")[0].value == "admin") && (document.getElementsByName("password")[0].value == "admin"))
-    	{
-    		console.log("Login Successful");
-    		//window.location.href = "http://localhost/major_interface/map/index.php";
-    		window.location="/map/index.php";
-    		return true;
-    	}
-    }
     </script>
 </body>
 </html>

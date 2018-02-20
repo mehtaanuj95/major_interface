@@ -6,14 +6,95 @@
     
     <script src="map_grid.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../css/fontAwesome.css">
+        <link rel="stylesheet" href="../css/hero-slider.css">
+        <link rel="stylesheet" href="../css/tooplate-style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+        <script src="../js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    	
+    	<style type="text/css">
+    		ul {
+			    list-style-type: none;
+			    margin: 0;
+			    padding: 0;
+			    overflow: hidden;
+			    background-color: #333;
+			}
+
+			li {
+			    float: left;
+			    border-right:1px solid #bbb;
+			}
+
+			li:last-child {
+			    border-right: none;
+			}
+
+			li a {
+			    display: block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px 16px;
+			    text-decoration: none;
+			}
+
+			li a:hover:not(.active) {
+			    background-color: yellow;
+			}
+
+			.active {
+			    background-color: #4CAF50;
+			}
+    	</style>
   	</head>
   	<body>
+  		<ul>
+		 <li><a class="active" href="#home">Home</a></li>
+		  <li><a href="#">News</a></li>
+		  <li><a href="#">Contact</a></li>
+		  
+		</ul>
+		  	<div id="signIn">
+		        <div class="container">
+		        	<div class="row">
+		        		<div class="col-md-6">
+		                    <div class="left-text">
+		                        <h4>Instructions for using this system.</h4>
+		                        <p> The Travelling Salesman Problem (often called TSP) is a classic algorithmic problem in the field of computer science. It aims in getting better solution. In this context better solution often means a solution that is cheaper. It is most easily expressed as a graph describing the locations of a set of nodes. Given a set of cities and the cost of travel (or distance) between each possible pairs, the TSP, is to find the best possible way of visiting all the cities and returning to the starting point that minimize the travel cost (or travel distance). 
+		                        <br><br>Below is a grid of points which is a virtual representation of points in warehouse. Follow the below instructions to run the simulation.<br>
+		                        
+		                        	1.	Select the points on grid that u want the robot to keep objects at.
+		                        	<br>
+		                        	2.	Press Finish to initialize the simulation.
+		                        
 
+		                        </p>
+		                        
+		                    </div>
+		                </div>
+		                <div class="col-md-6">
+		                    <div class="right-image">
+		                        <img src="../img/map.jpg" alt="">
+		                    </div>
+		                </div> 
+		            </div>
+		        </div>
+		    </div>
+		    <br>
+		    <br>
 
-     	<span id="chelu"> </span>
-
+     	<span id="chelu"> </span> <br>
+     	<span id="opti_path"></span> <br>
+     	<span id="total_cost"> </span>
       	<script type="text/javascript">
         	var list = [];
 
@@ -181,7 +262,8 @@
 			      		}
 			      		else 
 			      		{
-			        		cost[i][j] = Math.floor(Math.random()*(xMax+1));
+			        		//cost[i][j] = Math.floor(Math.random()*(xMax+1));
+			        		cost[i][j] = i+j;
 			      		}
 			    	}
 			  	}
@@ -248,6 +330,7 @@
 				    
 					break;
 				}
+
 			}
 			//------------------------------STEP - 4----------------------------//
 			//STEP - 4: Generate the coordinates from path
@@ -313,9 +396,127 @@
 				}
 				console.log();
 			}
+			var signal = document.getElementById("chelu").innerHTML;
+			console.log(signal);
 
+			document.getElementById("opti_path").innerHTML = "Optimised Path : "+bestEver;
+			//document.getElementById("total_cost").innerHTML = "Optimised Path : "+bestEver;
+			start_animation(signal, coordinates, size_final, bestEver);
           	//------------------------------------------------------------------//
         }
+
+        //https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+        function sleep(ms) {
+		  return new Promise(resolve => setTimeout(resolve, ms));
+		}
+
+        async function start_animation(signal, coordinates, size_final, bestEver) 
+        {
+        	//document.getElementById("test1").innerHTML = "This is the result";
+        	console.log("Animation function started");
+        	console.log('Taking a break...');
+		  	//await sleep(2000);
+		  	console.log('Two second later');
+        	//document.body.innerHTML = '';
+
+        	//-------------------------------START ANIMATION--------------------------------//
+
+        	var grid = document.createElement('table');
+            var rows = 10;
+            var cols = 10;
+            var i = 0;
+            grid.className = 'grid';
+            for (var r=0;r<rows;++r)
+            {
+                var tr = grid.appendChild(document.createElement('tr'));
+                for (var c=0;c<cols;++c)
+                {
+                    var cell = tr.appendChild(document.createElement('td'));
+                    
+                    cell.innerHTML = ++i;
+                   	cell.style.color = "blue";
+                    
+                }
+            }
+            document.body.appendChild(grid);
+
+            //Accessing grid elements
+            //https://www.w3schools.com/jsref/coll_table_cells.asp
+
+            //console.log(grid);
+            var g = new Array(10);
+            for(var m = 0; m < 10; m++) 
+            {
+            	g[m] = grid.rows[m].cells;
+            }
+            console.log(g);
+            //console.log(g[0][0].style.backgroundColor);
+            //g[0][0].style.backgroundColor = "green";
+            //var x = grid.rows[0].cells;
+            //console.log(x[0].innerHTML);
+            //console.log(x[3].style.backgroundColor = "green");
+           
+			//console.log("2,3 - " + g[2][3].innerHTML);
+			//console.log("3,3 - " + g[3][3].innerHTML);
+			//console.log("2,2 - " + g[2][2].innerHTML);
+			//console.log("4,3 - " + g[4][3].innerHTML);
+			
+			var x = 0; var y = 0;
+			
+			console.log(bestEver);
+			//console.log(signal, signal.length);
+			for(var i = 0; i < signal.length; i++)
+			{
+				var e =  parseInt(g[x][y].innerHTML);
+				if(bestEver.includes(e))
+				{
+					//console.log("hehehehehe");
+					g[x][y].style.backgroundColor = "yellow";
+				}
+				else
+				{
+					g[x][y].style.backgroundColor = "green";
+				}
+				
+				if(signal[i] == "d")
+				{
+					x++;
+				}
+				else if(signal[i] == "u")
+				{
+					x--;
+				}
+				else if(signal[i] == "r")
+				{
+					y++;
+				}
+				else if(signal[i] == "l")
+				{
+					y--;
+				}	
+				else
+				{
+					console.log("Something weird occured :",signal[i]);
+				}
+
+				await sleep(500);
+
+			}
+			
+				
+        	//-------------------------------END ANIMATION----------------------------------//
+        }
+
+
+        
+
+		async function demo() {
+		  console.log('Taking a break...');
+		  await sleep(2000);
+		  console.log('Two second later');
+		}
+
+
 
         //Fisher–Yates shuffle  algorithm
 		function shuffle(array) {
@@ -449,11 +650,8 @@
 		  }
 		}
 
-
-
-
       </script>
 
-
+    
   </body>
 </html>

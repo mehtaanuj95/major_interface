@@ -38,9 +38,11 @@
                 <div id="main-nav" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="#" class="scroll-top">Home</a></li>
+
                         <li><a href="#about" class="scroll-link" data-id="about">About</a></li>
                         <li><a href="#signIn" class="scroll-link" data-id="signIn">Sign In</a></li>
                         <li><a href="#contact" class="scroll-link" data-id="contact">Contact Us</a></li>
+
                     </ul>
                 </div>
                 <!--/.navbar-collapse-->
@@ -164,7 +166,7 @@
                  	
                     <div class="service-item fourth-service">
                         <a href = "https://github.com/DashmeetKaur" >
-                        <img src="img/anuj_new.jpg" />
+                        <img src="img/dashmeet.jpg" />
                         </a>
                         <h4>Dashmeet Kaur Chawla</h4>
                         <p>Designer and Coder</p>
@@ -185,8 +187,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-            	<form method="POST">
+
+            	<form>
             		<div class="col-md-4" style="font-size: 20px;">
             			Username <input type="text" name="username">
             		</div>
@@ -320,12 +322,8 @@
         };
     }
 
-    function authenticate(elem) {
-    	console.log("authrnticate function entryy");
-    	
-    	console.log(document.getElementsByName("username")[0].value);
-    	console.log(document.getElementsByName("password")[0].value);
 
+<<<<<<< HEAD
     	if((document.getElementsByName("username")[0].value == "admin") && (document.getElementsByName("password")[0].value == "admin"))
     	{
     		console.log("Login Successful");
@@ -336,6 +334,17 @@
     }
 
     //
+||||||| merged common ancestors
+    	if((document.getElementsByName("username")[0].value == "admin") && (document.getElementsByName("password")[0].value == "admin"))
+    	{
+    		console.log("Login Successful");
+    		//window.location.href = "http://localhost/major_interface/map/index.php";
+    		window.location="/map/index.php";
+    		return true;
+    	}
+    }
+=======
+>>>>>>> 46189e3132b7659ddeb2bb45d8112f972a98e05f
     </script>
 </body>
 </html>
